@@ -7,7 +7,6 @@ function gerarPDF(dados) {
   const { jsPDF } = window.jspdf;
   const { html2canvas } = window;
 
-  // Cria container invisível
   const template = document.createElement('div');
   template.style.position = 'fixed';
   template.style.left = '-9999px';
@@ -17,15 +16,11 @@ function gerarPDF(dados) {
   template.style.padding = '40px';
   template.style.fontFamily = "'Open Sans', sans-serif";
   template.style.color = '#1e2b2a';
-  template.style.minHeight = '1123px'; // A4
+  template.style.minHeight = '1123px';
 
-  // Monta o HTML com glassmorfismo
   template.innerHTML = `
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap');
-      @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
-      
-      * { margin: 0; padding: 0; box-sizing: border-box; }
       
       .glass-card {
         background: rgba(255, 255, 255, 0.50);
@@ -36,7 +31,6 @@ function gerarPDF(dados) {
         box-shadow: 0 8px 32px rgba(0, 20, 30, 0.10);
         padding: 20px 24px;
         margin-bottom: 18px;
-        transition: all 0.2s;
       }
       
       .header {
@@ -158,18 +152,6 @@ function gerarPDF(dados) {
         margin-top: 4px;
       }
       
-      .badge {
-        display: inline-block;
-        background: #2a5c3a;
-        color: #fff;
-        padding: 2px 16px;
-        border-radius: 30px;
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-      }
-      
       .footer {
         margin-top: 30px;
         text-align: center;
@@ -196,25 +178,8 @@ function gerarPDF(dados) {
         text-decoration: none;
         margin: 0 8px;
       }
-      .footer .contato a:hover { text-decoration: underline; }
-      
-      .icon-3d {
-        display: inline-block;
-        background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), rgba(42,92,58,0.05));
-        border-radius: 50%;
-        padding: 6px;
-        margin-right: 6px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.04), inset 0 -2px 6px rgba(0,0,0,0.02);
-        width: 32px;
-        height: 32px;
-        text-align: center;
-        line-height: 32px;
-        font-size: 16px;
-        color: #2a5c3a;
-      }
     </style>
 
-    <!-- ===== Cabeçalho com Logo ===== -->
     <div class="header">
       <img src="/logo.png" alt="Lian Huan" class="logo" crossorigin="anonymous" onerror="this.style.display='none'">
       <div class="title">LIAN <span>HUAN</span></div>
@@ -222,7 +187,6 @@ function gerarPDF(dados) {
       <div class="slogan">Equilíbrio · Bem-Estar · Transformação</div>
     </div>
 
-    <!-- Dados Pessoais -->
     <div class="glass-card">
       <div class="section-title"><i class="fas fa-id-card"></i> Dados Pessoais</div>
       <div class="grid-2">
@@ -242,14 +206,12 @@ function gerarPDF(dados) {
       ${dados.complemento ? `<div class="field"><span class="field-label">Complemento:</span> <span class="field-value">${dados.complemento}</span></div>` : ''}
     </div>
 
-    <!-- Queixa Principal -->
     <div class="glass-card">
       <div class="section-title"><i class="fas fa-stethoscope"></i> Queixa Principal</div>
       <div class="text-block">${dados.queixa_principal || 'N/I'}</div>
       ${dados.historico ? `<div style="margin-top:10px;"><span class="field-label">Histórico:</span><div class="text-block">${dados.historico}</div></div>` : ''}
     </div>
 
-    <!-- Seções checkbox com glassmorfismo -->
     ${gerarSecaoGlass('fa-thermometer-half', 'Temperatura Corporal', ['temp_friorento','temp_calorento','temp_misto'], dados)}
     ${gerarSecaoGlass('fa-heart', 'Emoções', ['emo_ansiedade','emo_raiva','emo_tristeza','emo_preocupacao','emo_medo'], dados)}
     ${gerarSecaoGlass('fa-moon', 'Sono', ['sono_insonia','sono_delirio','sono_sonhos','sono_sonolencia'], dados)}
@@ -258,7 +220,7 @@ function gerarPDF(dados) {
     ${gerarSecaoGlass('fa-toilet', 'Urina', ['urina_turva','urina_escura','urina_profusa'], dados)}
     ${gerarSecaoGlass('fa-poo', 'Intestinos', ['int_ressecadas','int_pastosas','int_tampao','int_muco','int_ardencia'], dados)}
     ${dados.sexo === 'Feminino' ? gerarSecaoGlass('fa-venus', 'Menstruação', ['men_adianta','men_atrasa','men_irregular','men_tpm_distensao','men_tpm_coagulos'], dados) : ''}
-    ${gerarSecaoGlass('fa-tint', 'Corrimentos', ['corr_branco','corr_amarelo','corr_vermelho','corr_escuro'], dados)}
+    ${dados.sexo === 'Feminino' ? gerarSecaoGlass('fa-tint', 'Corrimentos', ['corr_branco','corr_amarelo','corr_vermelho','corr_escuro'], dados) : ''}
     ${gerarSecaoGlass('fa-bolt', 'Síndromes Bi', ['bi_frio','bi_calor','bi_umidade','bi_vento','bi_ossea'], dados)}
     ${gerarSecaoGlass('fa-droplet', 'Sangue', ['sangue_tontura','sangue_caimbras','sangue_apetite'], dados)}
     ${gerarSecaoGlass('fa-utensil-spoon', 'Sabores', ['sabor_salgado','sabor_picante','sabor_azedo','sabor_doce','sabor_amargo'], dados)}
@@ -269,7 +231,6 @@ function gerarPDF(dados) {
     ${gerarSecaoGlass('fa-hand', 'Tato', ['tato_fraco'], dados)}
     ${gerarSecaoGlass('fa-mouth', 'Boca e Gosto', ['boca_labios_azulados','boca_labios_palidos','boca_labios_brancos','boca_salivacao','boca_secura','boca_garganta_seca','boca_amarga','boca_sangramentos'], dados)}
 
-    <!-- Língua -->
     <div class="glass-card">
       <div class="section-title"><i class="fa-regular fa-comment"></i> Língua</div>
       <div class="grid-3">
@@ -281,7 +242,6 @@ function gerarPDF(dados) {
       ${gerarTagsGlass(['lingua_palida_seca','lingua_palida_umida','lingua_vermelha','lingua_vermelha_areas','lingua_ulcerada','lingua_fissuras','lingua_purpura','lingua_saburra_branca','lingua_saburra_amarela','lingua_sem_saburra','lingua_denteada','lingua_inchada'], dados)}
     </div>
 
-    <!-- Pulso -->
     <div class="glass-card">
       <div class="section-title"><i class="fa-regular fa-heart"></i> Pulso</div>
       <div class="tag-group">
@@ -291,16 +251,12 @@ function gerarPDF(dados) {
       </div>
     </div>
 
-    <!-- Textos longos -->
     ${gerarTextoLongoGlass('Medicação em uso', dados.medicacao, 'fa-pills')}
     ${gerarTextoLongoGlass('Palpação Shu e Mo', dados.palpacao_shu_mo, 'fa-hand-holding-heart')}
     ${gerarTextoLongoGlass('Palpação Auricular', dados.palpacao_auricular, 'fa-ear-listen')}
     ${gerarTextoLongoGlass('Fitoterápicos', dados.fitoterapicos, 'fa-leaf')}
-
-    <!-- Prescrições -->
     ${gerarSessoesGlass(dados)}
 
-    <!-- Rodapé com terapeutas -->
     <div class="footer">
       <div class="terapeutas">
         José Ivo Sampaio <span>·</span> Terapeuta &nbsp;|&nbsp; Danielle Sampaio <span>·</span> Terapeuta
@@ -318,7 +274,6 @@ function gerarPDF(dados) {
 
   document.body.appendChild(template);
 
-  // Funções auxiliares
   function gerarSecaoGlass(icone, titulo, campos, dados) {
     const marcados = campos.filter(c => dados[c] === 'sim');
     if (marcados.length === 0) return '';
@@ -372,7 +327,6 @@ function gerarPDF(dados) {
     `;
   }
 
-  // Aguarda o render e gera o PDF
   setTimeout(() => {
     html2canvas(template, {
       scale: 1.8,

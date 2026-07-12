@@ -7,7 +7,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
-  <!-- jsPDF + html2canvas -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="pdf-generator.js"></script>
@@ -52,7 +51,6 @@
       }
       const dados = JSON.parse(dadosAnamnese);
 
-      // Download PDF
       document.getElementById('btnDownloadPDF').addEventListener('click', function() {
         if (typeof gerarPDF === 'function') {
           gerarPDF(dados);
@@ -61,7 +59,6 @@
         }
       });
 
-      // Enviar resumo via WhatsApp
       document.getElementById('btnWhatsAppAnamnese').addEventListener('click', function() {
         const numero = '5521999999999';
         const mensagem = 
@@ -73,7 +70,6 @@
           `*E-mail:* ${dados.email_anamnese || 'N/I'}%0A` +
           `*Queixa Principal:* ${dados.queixa_principal || 'N/I'}%0A%0A` +
           `📄 *PDF completo disponível para download no site.*`;
-        
         const url = `https://wa.me/${numero}?text=${mensagem}`;
         window.open(url, '_blank');
       });

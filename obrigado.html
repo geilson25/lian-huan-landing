@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <section class="obrigado py-5 text-center">
     <div class="container">
       <div class="row justify-content-center">
@@ -17,29 +16,21 @@
           <i class="fas fa-check-circle fa-5x text-success mb-4"></i>
           <h1 class="mb-3">Recebemos sua solicitação!</h1>
           <p class="lead">Em breve nossa equipe entrará em contato via WhatsApp.</p>
-
-          <!-- Botão para falar no WhatsApp -->
           <button id="btnWhatsApp" class="btn btn-success btn-lg mt-3">
             <i class="fab fa-whatsapp"></i> Falar agora no WhatsApp
           </button>
           <br>
-
-          <!-- Link para preencher a anamnese -->
           <div class="mt-4">
             <a href="/anamnese.html" class="btn btn-secondary btn-lg">
               <i class="fas fa-file-medical"></i> Preencher ficha de anamnese
             </a>
-            <p class="text-muted small mt-2">
-              Quanto mais detalhes, melhor podemos te atender!
-            </p>
+            <p class="text-muted small mt-2">Quanto mais detalhes, melhor podemos te atender!</p>
           </div>
-
           <a href="/" class="btn btn-outline-secondary mt-3">← Voltar para a página inicial</a>
         </div>
       </div>
     </div>
   </section>
-
   <script>
     (function() {
       const leadData = sessionStorage.getItem('leadData');
@@ -48,7 +39,7 @@
         return;
       }
       const { nome, whatsapp, email, cidade, queixa } = JSON.parse(leadData);
-      const numero = '5521999999999'; // substitua pelo seu número
+      const numero = '5521999999999';
       const mensagem = `Olá! Meu nome é ${nome} e gostaria de agendar uma avaliação. %0A` +
                        `WhatsApp: ${whatsapp} %0A` +
                        `E-mail: ${email || 'Não informado'} %0A` +
@@ -62,6 +53,5 @@
       });
     })();
   </script>
-
 </body>
 </html>
