@@ -18,6 +18,11 @@ function gerarPDF(dados) {
   template.style.color = '#1e2b2a';
   template.style.minHeight = '1123px';
 
+  function cleanValue(val) {
+    if (!val || val.trim() === '') return 'Não informado';
+    return val;
+  }
+
   template.innerHTML = `
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap');
@@ -190,25 +195,25 @@ function gerarPDF(dados) {
     <div class="glass-card">
       <div class="section-title"><i class="fas fa-id-card"></i> Dados Pessoais</div>
       <div class="grid-2">
-        <div class="field"><span class="field-label">Nome:</span> <span class="field-value">${dados.nome_completo || 'N/I'}</span></div>
-        <div class="field"><span class="field-label">Data Nasc.:</span> <span class="field-value">${dados.data_nasc || 'N/I'}</span></div>
-        <div class="field"><span class="field-label">Sexo:</span> <span class="field-value">${dados.sexo || 'N/I'}</span></div>
-        <div class="field"><span class="field-label">Telefone:</span> <span class="field-value">${dados.telefone || 'N/I'}</span></div>
-        <div class="field"><span class="field-label">E-mail:</span> <span class="field-value">${dados.email_anamnese || 'N/I'}</span></div>
-        <div class="field"><span class="field-label">Profissão:</span> <span class="field-value">${dados.profissao || 'N/I'}</span></div>
-        <div class="field"><span class="field-label">CPF:</span> <span class="field-value">${dados.cpf || 'N/I'}</span></div>
-        <div class="field"><span class="field-label">CEP:</span> <span class="field-value">${dados.cep || 'N/I'}</span></div>
+        <div class="field"><span class="field-label">Nome:</span> <span class="field-value">${cleanValue(dados.nome_completo)}</span></div>
+        <div class="field"><span class="field-label">Data Nasc.:</span> <span class="field-value">${cleanValue(dados.data_nasc)}</span></div>
+        <div class="field"><span class="field-label">Sexo:</span> <span class="field-value">${cleanValue(dados.sexo)}</span></div>
+        <div class="field"><span class="field-label">Telefone:</span> <span class="field-value">${cleanValue(dados.telefone)}</span></div>
+        <div class="field"><span class="field-label">E-mail:</span> <span class="field-value">${cleanValue(dados.email_anamnese)}</span></div>
+        <div class="field"><span class="field-label">Profissão:</span> <span class="field-value">${cleanValue(dados.profissao)}</span></div>
+        <div class="field"><span class="field-label">CPF:</span> <span class="field-value">${cleanValue(dados.cpf)}</span></div>
+        <div class="field"><span class="field-label">CEP:</span> <span class="field-value">${cleanValue(dados.cep)}</span></div>
       </div>
       <div class="field" style="margin-top:6px;">
         <span class="field-label">Endereço:</span> 
-        <span class="field-value">${[dados.rua, dados.numero, dados.bairro, dados.cidade, dados.estado, dados.pais].filter(Boolean).join(', ') || 'N/I'}</span>
+        <span class="field-value">${cleanValue([dados.rua, dados.numero, dados.bairro, dados.cidade, dados.estado, dados.pais].filter(Boolean).join(', '))}</span>
       </div>
       ${dados.complemento ? `<div class="field"><span class="field-label">Complemento:</span> <span class="field-value">${dados.complemento}</span></div>` : ''}
     </div>
 
     <div class="glass-card">
       <div class="section-title"><i class="fas fa-stethoscope"></i> Queixa Principal</div>
-      <div class="text-block">${dados.queixa_principal || 'N/I'}</div>
+      <div class="text-block">${cleanValue(dados.queixa_principal)}</div>
       ${dados.historico ? `<div style="margin-top:10px;"><span class="field-label">Histórico:</span><div class="text-block">${dados.historico}</div></div>` : ''}
     </div>
 
@@ -219,10 +224,10 @@ function gerarPDF(dados) {
     ${gerarSecaoGlass('fa-utensils', 'Digestão', ['dig_diarreia_matinal','dig_gases_sem_emocional','dig_gases_com_emocional','dig_azia','dig_dor_fria','dig_arrotos','dig_dor_ardente','dig_dor_facada'], dados)}
     ${gerarSecaoGlass('fa-toilet', 'Urina', ['urina_turva','urina_escura','urina_profusa'], dados)}
     ${gerarSecaoGlass('fa-poo', 'Intestinos', ['int_ressecadas','int_pastosas','int_tampao','int_muco','int_ardencia'], dados)}
-    ${dados.sexo === 'Feminino' ? gerarSecaoGlass('fa-venus', 'Menstruação', ['men_adianta','men_atrasa','men_irregular','men_tpm_distensao','men_tpm_coagulos'], dados) : ''}
+    ${dados.sexo === 'Feminino' ? gerarSecaoGlass('fa-venus', 'Menstruação', ['men_adianta','men_atrasa','men_irregular','men_tpm_distensao','men_tpm_coagulos','sangue_apetite'], dados) : ''}
     ${dados.sexo === 'Feminino' ? gerarSecaoGlass('fa-tint', 'Corrimentos', ['corr_branco','corr_amarelo','corr_vermelho','corr_escuro'], dados) : ''}
     ${gerarSecaoGlass('fa-bolt', 'Síndromes Bi', ['bi_frio','bi_calor','bi_umidade','bi_vento','bi_ossea'], dados)}
-    ${gerarSecaoGlass('fa-droplet', 'Sangue', ['sangue_tontura','sangue_caimbras','sangue_apetite'], dados)}
+    ${gerarSecaoGlass('fa-droplet', 'Sangue', ['sangue_tontura','sangue_caimbras'], dados)}
     ${gerarSecaoGlass('fa-utensil-spoon', 'Sabores', ['sabor_salgado','sabor_picante','sabor_azedo','sabor_doce','sabor_amargo'], dados)}
     ${gerarSecaoGlass('fa-lungs', 'Respiração', ['resp_fraca','resp_forcada','resp_falta_ar','resp_dispneia','resp_suspiro','resp_tosse_rouca','resp_tosse_seca','resp_tosse_clara'], dados)}
     ${gerarSecaoGlass('fa-eye', 'Olhos e Visão', ['olhos_fraca','olhos_turva','olhos_vermelhidão','olhos_secura','olhos_lacrimejamento'], dados)}
@@ -234,10 +239,10 @@ function gerarPDF(dados) {
     <div class="glass-card">
       <div class="section-title"><i class="fa-regular fa-comment"></i> Língua</div>
       <div class="grid-3">
-        <div class="field"><span class="field-label">Cor:</span> <span class="field-value">${dados.lingua_cor || 'N/A'}</span></div>
-        <div class="field"><span class="field-label">Forma:</span> <span class="field-value">${dados.lingua_forma || 'N/A'}</span></div>
-        <div class="field"><span class="field-label">Saburra:</span> <span class="field-value">${dados.lingua_saburra || 'N/A'}</span></div>
-        <div class="field"><span class="field-label">Umidade:</span> <span class="field-value">${dados.lingua_umidade || 'N/A'}</span></div>
+        <div class="field"><span class="field-label">Cor:</span> <span class="field-value">${cleanValue(dados.lingua_cor)}</span></div>
+        <div class="field"><span class="field-label">Forma:</span> <span class="field-value">${cleanValue(dados.lingua_forma)}</span></div>
+        <div class="field"><span class="field-label">Saburra:</span> <span class="field-value">${cleanValue(dados.lingua_saburra)}</span></div>
+        <div class="field"><span class="field-label">Umidade:</span> <span class="field-value">${cleanValue(dados.lingua_umidade)}</span></div>
       </div>
       ${gerarTagsGlass(['lingua_palida_seca','lingua_palida_umida','lingua_vermelha','lingua_vermelha_areas','lingua_ulcerada','lingua_fissuras','lingua_purpura','lingua_saburra_branca','lingua_saburra_amarela','lingua_sem_saburra','lingua_denteada','lingua_inchada'], dados)}
     </div>
@@ -247,7 +252,7 @@ function gerarPDF(dados) {
       <div class="tag-group">
         ${['pulso_rapido','pulso_lento','pulso_superficial','pulso_profundo','pulso_cheio','pulso_vazio','pulso_fino','pulso_corda','pulso_escorregadio','pulso_irregular']
           .filter(c => dados[c] === 'sim')
-          .map(c => `<span class="tag">${c.replace('pulso_','').toUpperCase()}</span>`).join('') || '<span style="color:#999;">N/A</span>'}
+          .map(c => `<span class="tag">${c.replace('pulso_','').toUpperCase()}</span>`).join('') || '<span style="color:#999;">Não informado</span>'}
       </div>
     </div>
 
@@ -257,14 +262,14 @@ function gerarPDF(dados) {
     ${gerarTextoLongoGlass('Fitoterápicos', dados.fitoterapicos, 'fa-leaf')}
     ${gerarSessoesGlass(dados)}
 
+    <!-- RODAPÉ DO PDF - SEM E-MAIL -->
     <div class="footer">
       <div class="terapeutas">
         José Ivo Sampaio <span>·</span> Terapeuta &nbsp;|&nbsp; Danielle Sampaio <span>·</span> Terapeuta
       </div>
       <div class="contato">
         <a href="https://www.instagram.com/lian_huan_instituto/">@lian_huan_instituto</a>
-        · <a href="tel:+5581987361800">(81) 98736-1800</a>
-#        · <a href="mailto:contato@lianhuan.com.br">contato@lianhuan.com.br</a>
+        · <a href="https://wa.me/558187361800">(81) 8736-1800</a>
       </div>
       <div style="font-size:9px; color:#8a9a9a; margin-top:6px;">
         Ficha de Anamnese · Lian Huan Instituto de Medicina Tradicional Chinesa
@@ -294,7 +299,7 @@ function gerarPDF(dados) {
   }
 
   function gerarTextoLongoGlass(titulo, valor, icone) {
-    if (!valor) return '';
+    if (!valor || valor.trim() === '') return '';
     return `
       <div class="glass-card">
         <div class="section-title"><i class="fas ${icone}"></i> ${titulo}</div>
@@ -308,7 +313,7 @@ function gerarPDF(dados) {
     let temSessao = false;
     for (let i = 1; i <= 22; i++) {
       const val = dados[`sessao_${i}`];
-      if (val) {
+      if (val && val.trim() !== '') {
         temSessao = true;
         html += `
           <div style="margin-bottom:10px; padding:10px 14px; background:rgba(255,255,255,0.25); backdrop-filter:blur(6px); border-radius:12px; border:1px solid rgba(255,255,255,0.15);">
