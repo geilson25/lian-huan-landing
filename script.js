@@ -1,4 +1,4 @@
-// ===== MÁSCARA PARA TELEFONE =====
+// ===== MÁSCARA PARA TELEFONE (lead) =====
 document.addEventListener('DOMContentLoaded', function() {
   const inputTel = document.getElementById('whatsapp');
   if (inputTel) {
@@ -16,28 +16,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // ===== SALVAR DADOS NO SESSIONSTORAGE ANTES DO ENVIO =====
-  const form = document.querySelector('form[name="lead-form"]');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      // Captura os valores
+  // ===== SALVAR DADOS DO LEAD NO SESSIONSTORAGE =====
+  const formLead = document.querySelector('form[name="lead-form"]');
+  if (formLead) {
+    formLead.addEventListener('submit', function(e) {
       const nome = document.getElementById('nome').value.trim();
       const whatsapp = document.getElementById('whatsapp').value.trim();
       const email = document.getElementById('email').value.trim();
       const cidade = document.getElementById('cidade').value.trim();
       const queixa = document.getElementById('queixa').value.trim();
 
-      // Salva em sessionStorage para usar na página obrigado
       sessionStorage.setItem('leadData', JSON.stringify({
         nome, whatsapp, email, cidade, queixa
       }));
-
-      // O formulário será enviado normalmente para o Netlify
-      // O redirecionamento para obrigado.html ocorrerá após o envio
     });
   }
 
-  // ===== SCROLL SUAVE PARA LINKS INTERNOS =====
+  // ===== SCROLL SUAVE =====
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const href = this.getAttribute('href');

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha de Anamnese – Lian Huan</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .anamnese-section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .anamnese-section h3 {
+      color: var(--primary);
+      font-family: var(--font-heading);
+      border-bottom: 2px solid var(--secondary);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .form-check-inline {
+      margin-right: 1rem;
+    }
+    .btn-enviar {
+      background: var(--primary);
+      border: none;
+      padding: 12px 40px;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: 0.3s;
+    }
+    .btn-enviar:hover {
+      background: #1f4a2d;
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container py-5">
+    <div class="text-center mb-4">
+      <img src="logo.png" alt="Lian Huan" style="max-height:80px;">
+      <h1 class="section-title mt-3">Ficha de Anamnese</h1>
+      <p class="text-muted">Preencha com atenção. Todos os dados são confidenciais.</p>
+    </div>
+
+    <form name="anamnese-form" netlify action="/obrigado-anamnese.html" method="POST">
+      <input type="hidden" name="form-name" value="anamnese-form">
+
+      <!-- ========== DADOS PESSOAIS ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-user me-2"></i>Dados Pessoais</h3>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Nome completo *</label>
+            <input type="text" name="nome_completo" class="form-control" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Data de nascimento</label>
+            <input type="date" name="data_nasc" class="form-control">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Telefone *</label>
+            <input type="tel" name="telefone" class="form-control" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">E-mail</label>
+            <input type="email" name="email_anamnese" class="form-control">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Profissão</label>
+            <input type="text" name="profissao" class="form-control">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">CPF</label>
+            <input type="text" name="cpf" class="form-control">
+          </div>
+          <div class="col-12 mb-3">
+            <label class="form-label">Endereço</label>
+            <input type="text" name="endereco" class="form-control">
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Queixa Principal *</label>
+          <textarea name="queixa_principal" rows="3" class="form-control" required></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Histórico da queixa</label>
+          <textarea name="historico" rows="4" class="form-control"></textarea>
+        </div>
+      </div>
+
+      <!-- ========== TEMPERATURA CORPORAL ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-thermometer-half me-2"></i>Temperatura Corporal</h3>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="temp_friorento" value="sim">
+          <label class="form-check-label">Indivíduo friorento, frio nas mãos/pés, abdômen, região lombar ou pernas. Dorme agasalhado e encolhido. (Def. Yang dos rins)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="temp_calorento" value="sim">
+          <label class="form-check-label">Indivíduo calorento, mãos/pés quentes, transpira muito, descobre ao dormir. (Def. Yin dos rins)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="temp_misto" value="sim">
+          <label class="form-check-label">Misto: mãos quentes e pés frios, ou o contrário. (Estagnação Qi do fígado)</label>
+        </div>
+      </div>
+
+      <!-- ========== EMOÇÕES ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-heart me-2"></i>Emoções</h3>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="emo_ansiedade" value="sim"><label>Ansiedade, alegria excessiva, euforia. (Def. Yin/Xue, calor, mucosidade no coração)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="emo_raiva" value="sim"><label>Raiva, irritação, frustração, ódio. (Estagnação Qi do fígado)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="emo_tristeza" value="sim"><label>Tristeza, mágoa, pesar. (Def. Qi do pulmão e/ou coração)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="emo_preocupacao" value="sim"><label>Excesso de pensamentos, preocupação, pensamentos repetitivos. (Def. do baço)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="emo_medo" value="sim"><label>Medo, pavor, pânico, susto. (Def. dos rins)</label></div>
+      </div>
+
+      <!-- ========== SONO ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-moon me-2"></i>Sono</h3>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="sono_insonia" value="sim"><label>Insônia. (Def. Yin/Xue do coração/fígado, calor, retenção de alimentos)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="sono_delirio" value="sim"><label>Delírio. (Fogo no coração)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="sono_sonhos" value="sim"><label>Excesso de sonhos e pesadelos. (Def. Yin/Xue do coração/fígado, calor)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="sono_sonolencia" value="sim"><label>Sonolência. (Def. Qi/Yang do baço e rins)</label></div>
+      </div>
+
+      <!-- ========== SEDE ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-tint me-2"></i>Sede</h3>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="sede_pouca" value="sim"><label>Pouca sede. (Def. Yang ou umidade/frio no baço)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="sede_muita" value="sim"><label>Muita sede. (Calor nos 3 aquecedores e/ou def. Yin)</label></div>
+      </div>
+
+      <!-- ========== DIGESTÃO ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-utensils me-2"></i>Digestão</h3>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="dig_diarreia_matinal" value="sim"><label>Diarréia matinal crônica com alimentos não digeridos. (Def. Yang do baço e rins)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="dig_gases_sem_emocional" value="sim"><label>Muitos gases, pouco apetite, distensão, evacuações alternando uniformes/soltas (sem componente emocional). (Def. Qi do baço)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="dig_gases_com_emocional" value="sim"><label>Muitos gases, pouco apetite, distensão, evacuações alternando uniformes/soltas (com aspectos emocionais). (Estagnação Qi do fígado)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="dig_azia" value="sim"><label>Azia, aftas, queimação, boca/lábios secos. (Def. Yin do estômago)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="dig_dor_fria" value="sim"><label>Dor e frio no epigástrio, melhora com calor, ausência de sede, vômito de líquidos claros, ruídos. (Retenção de líquidos no Estômago por frio)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="dig_arrotos" value="sim"><label>Arrotos de mau cheiro, regurgitações ácidas, fezes com mau cheiro. (Retenção de alimentos no estômago)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="dig_dor_ardente" value="sim"><label>Dor ardente no epigástrio, vômitos de líquidos azedos (refluxo), dor/inchaço/sangramento gengivas, mau hálito, enxaqueca frontal. (Fogo no estômago)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="dig_dor_facada" value="sim"><label>Dor aguda com sensação de facada, irradiação dorsal, piora com pressão/alimentação, perda de peso, tez escura, hematêmese. (Estagnação de sangue no estômago)</label></div>
+      </div>
+
+      <!-- ========== URINA ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-toilet me-2"></i>Urina</h3>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="urina_turva" value="sim"><label>Urina turva/escurecendo, muita espuma, urina muitas vezes. (Umidade/frio no baço e def. Yang dos rins)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="urina_escura" value="sim"><label>Urina escura, escassa, hematúria, cálculos, urgência, dor/ardência. (Umidade/calor na bexiga e calor cheio no intestino delgado)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="urina_profusa" value="sim"><label>Urina profusa, clara, polaciúria, incontinência, oligúria, edema, muita espuma, gotejamento. (Def. Yang dos rins)</label></div>
+      </div>
+
+      <!-- ========== INTESTINOS ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-poo me-2"></i>Intestinos</h3>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="int_ressecadas" value="sim"><label>Evacuações ressecadas do princípio ao fim, escassas. (Def. Xue do fígado, def. Yin dos rins, calor nos intestinos)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="int_pastosas" value="sim"><label>Evacuações com fezes pastosas/líquidas. (Def. baço/umidade)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="int_tampao" value="sim"><label>Fezes com tampão ressecado e logo em seguida pastosa. (Def. baço)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="int_muco" value="sim"><label>Fezes com muco. (Umidade nos intestinos)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="int_ardencia" value="sim"><label>Ardência ao evacuar e odor forte. (Calor nos intestinos)</label></div>
+      </div>
+
+      <!-- ========== MENSTRUAÇÃO ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-venus me-2"></i>Menstruação</h3>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="men_adianta" value="sim"><label>Ciclo adianta 7 a 10 dias. (Def. baço, calor)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="men_atrasa" value="sim"><label>Ciclo atrasa 7 a 10 dias. (Estagnação Qi/Xue do fígado, def. baço)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="men_irregular" value="sim"><label>Ciclo irregular (atrasa ou adianta). (Estagnação Qi do fígado, def. baço/rim)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="men_tpm_distensao" value="sim"><label>TPM com distensão abdominal, displasia mamária, irritabilidade, amenorréia, dismenorréia. (Estagnação Qi do fígado)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="men_tpm_coagulos" value="sim"><label>TPM com dismenorréia, sangramento escuro, coágulos, fisgadas no ovário no período ovulatório. (Estagnação Xue do fígado)</label></div>
+      </div>
+
+      <!-- ========== CORRIMENTOS ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-tint me-2"></i>Corrimentos</h3>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="corr_branco" value="sim"><label>Corrimento branco, transparente ou abundante. (Umidade, def. Yang do baço)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="corr_amarelo" value="sim"><label>Corrimento amarelo, viscoso, malcheiroso, prurido. (Umidade/calor no F e VB)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="corr_vermelho" value="sim"><label>Corrimento vermelho, ininterrupto, leve odor. (Calor/umidade no fígado e vesícula biliar)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="corr_escuro" value="sim"><label>Corrimento escuro, sensação de frio na barriga e dor lombar. (Def. Yang do baço)</label></div>
+      </div>
+
+      <!-- ========== SÍNDROMES BI ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-bolt me-2"></i>Síndromes Bi</h3>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="bi_frio" value="sim"><label>Piora com o frio, gelo, repouso, sensação de frio local. (Frio)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="bi_calor" value="sim"><label>Piora com o calor, movimento, calor local, vermelhidão, coceira. (Calor)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="bi_umidade" value="sim"><label>Tez brilhante, inchaço local, pior no clima úmido. (Umidade)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="bi_vento" value="sim"><label>Dores migratórias, câimbras, tremores e sensibilidade ao vento. (Vento)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="bi_ossea" value="sim"><label>Início de deformação articular, inchaços persistentes, enfraquecimento ósseo. (Óssea)</label></div>
+      </div>
+
+      <!-- ========== SANGUE ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-droplet me-2"></i>Sangue</h3>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="sangue_tontura" value="sim"><label>Tontura ao levantar rápido, enxaqueca difusa ao final do dia, unhas fracas, queda de cabelos, manchas no campo visual, histórico de anemias. (Def. Xue do fígado)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="sangue_caimbras" value="sim"><label>Câimbras, tiques palpebrais, espasmos migratórios, bruxismo, enxaqueca tensional, tensão/endurecimento do trapézio. (Def. Xue e agitação do vento do fígado)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="sangue_apetite" value="sim"><label>Aumento do apetite no período menstrual, parto cesárea, fraqueza no período/pós-menstruação, cirurgias. (Def. Xue do fígado)</label></div>
+      </div>
+
+      <!-- ========== LÍNGUA ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-comment me-2"></i>Língua</h3>
+        <div class="row">
+          <div class="col-md-4 mb-2">
+            <label class="form-label">Cor</label>
+            <select name="lingua_cor" class="form-select">
+              <option value="">Selecione...</option>
+              <option>Normal</option><option>Pálida</option><option>Vermelha</option><option>Vermelha escura</option><option>Púrpura</option>
+            </select>
+          </div>
+          <div class="col-md-4 mb-2">
+            <label class="form-label">Forma</label>
+            <select name="lingua_forma" class="form-select">
+              <option value="">Selecione...</option>
+              <option>Rachadura</option><option>Desviada</option><option>Longa</option><option>Curta</option><option>Trêmula</option><option>Marcas de dentes</option><option>Inchada</option><option>Fina</option>
+            </select>
+          </div>
+          <div class="col-md-4 mb-2">
+            <label class="form-label">Saburra</label>
+            <select name="lingua_saburra" class="form-select">
+              <option value="">Selecione...</option>
+              <option>Espessa</option><option>Muito espessa</option><option>Pegajosa</option><option>Branca</option><option>Amarela</option><option>Preta</option>
+            </select>
+          </div>
+          <div class="col-md-4 mb-2">
+            <label class="form-label">Umidade</label>
+            <select name="lingua_umidade" class="form-select">
+              <option value="">Selecione...</option>
+              <option>Muito úmida</option><option>Pegajosa</option><option>Seca</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_palida_seca" value="sim"><label>Pálida e seca (def. Xue)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_palida_umida" value="sim"><label>Pálida e úmida (def. Yang Qi)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_vermelha" value="sim"><label>Vermelha (calor, def. Yin Qi)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_vermelha_areas" value="sim"><label>Vermelha com áreas avermelhadas (estagnação de Xue)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_ulcerada" value="sim"><label>Ulcerada e vermelha (ascensão de fogo do C)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_fissuras" value="sim"><label>Com fissuras (calor excessivo, def. Yin Qi do R)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_purpura" value="sim"><label>Púrpura ou violácea (estase de Xue)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_saburra_branca" value="sim"><label>Saburra branca (frio interno)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_saburra_amarela" value="sim"><label>Saburra amarela (calor interno)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_sem_saburra" value="sim"><label>Sem saburra (insuficiência de Qi do E)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_denteada" value="sim"><label>Denteada (umidade, def. Qi do BP)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_inchada" value="sim"><label>Inchada (umidade em BP)</label></div>
+      </div>
+
+      <!-- ========== SABORES ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-utensil-spoon me-2"></i>Sabores</h3>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="sabor_salgado" value="sim"><label>Salgado (def. Qi do R)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="sabor_picante" value="sim"><label>Picante (def. Qi do P)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="sabor_azedo" value="sim"><label>Azedo/ácido (estagnação de Qi do F)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="sabor_doce" value="sim"><label>Doce (def. Qi do BP)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="sabor_amargo" value="sim"><label>Amargo (def. Qi do C)</label></div>
+      </div>
+
+      <!-- ========== RESPIRAÇÃO ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-lungs me-2"></i>Respiração</h3>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="resp_fraca" value="sim"><label>Respiração fraca (def. Qi do C e P)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="resp_forcada" value="sim"><label>Respiração forçada (flegma, Qi perverso/umidade em P)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="resp_falta_ar" value="sim"><label>Falta de ar (def. Qi do P)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="resp_dispneia" value="sim"><label>Dispnéia (estase de Qi do P)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="resp_suspiro" value="sim"><label>Suspiro (estase do Qi do F)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="resp_tosse_rouca" value="sim"><label>Tosse rouca (Qi perverso vento-frio ou frio/flegma no P)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="resp_tosse_seca" value="sim"><label>Tosse seca (Qi perverso secura, def. Yin do P)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="resp_tosse_clara" value="sim"><label>Tosse clara (Qi perverso vento/calor ou flegma/calor no P)</label></div>
+      </div>
+
+      <!-- ========== OLHOS E VISÃO ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-eye me-2"></i>Olhos e Visão</h3>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="olhos_fraca" value="sim"><label>Visão fraca (estagnação de Qi do F, def. Yin Qi na B e R)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="olhos_turva" value="sim"><label>Visão turva (Qi perverso vento, def. Xue do F)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="olhos_vermelhidão" value="sim"><label>Vermelhidão (fogo, ascensão do Yang Qi do F)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="olhos_secura" value="sim"><label>Secura (vazio de Yin Qi do F)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="olhos_lacrimejamento" value="sim"><label>Lacrimejamento (Qi perverso vento)</label></div>
+      </div>
+
+      <!-- ========== OUVIDOS E AUDIÇÃO ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-ear me-2"></i>Ouvidos e Audição</h3>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="ouv_zumbido" value="sim"><label>Zumbido (def. Yin Qi na B e R, vento)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="ouv_prurido" value="sim"><label>Prurido (coceira)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="ouv_fraca" value="sim"><label>Audição fraca (def. Yin Qi da B e R)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="ouv_surdez" value="sim"><label>Surdez (def. sangue no C, def. Yin Qi na B e R)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="ouv_surdez_subita" value="sim"><label>Surdez súbita (fogo no F)</label></div>
+      </div>
+
+      <!-- ========== NARIZ E OLFATO ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-nose me-2"></i>Nariz e Olfato</h3>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="nariz_fraco" value="sim"><label>Olfato fraco (def. Yin Qi dos P, Qi perverso vento/frio)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="nariz_anosmia" value="sim"><label>Anosmia (debilidade de IG)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="nariz_coriza" value="sim"><label>Coriza/mucosidade (Qi perverso calor no P)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="nariz_prurido" value="sim"><label>Prurido (Qi perverso vento no P)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="nariz_obstrucao" value="sim"><label>Obstrução (Qi perverso vento no P)</label></div>
+      </div>
+
+      <!-- ========== TATO ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-hand me-2"></i>Tato</h3>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="tato_fraco" value="sim"><label>Tato fraco (def. Qi do C)</label></div>
+      </div>
+
+      <!-- ========== BOCA E GOSTO ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-mouth me-2"></i>Boca e Gosto</h3>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="boca_labios_azulados" value="sim"><label>Lábios azulados (estase de Xue do C)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="boca_labios_palidos" value="sim"><label>Lábios pálidos (Qi perverso frio/umidade em BP)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="boca_labios_brancos" value="sim"><label>Lábios brancos (def. Yin Qi e Xue do C)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="boca_salivacao" value="sim"><label>Salivação (Qi perverso umidade em BP)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="boca_secura" value="sim"><label>Secura (Xie em P e Wei Qi)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="boca_garganta_seca" value="sim"><label>Garganta seca (subida do Fogo do F)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="boca_amarga" value="sim"><label>Boca amarga (Qi perverso calor/umidade em F e VB)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="boca_sangramentos" value="sim"><label>Sangramentos (def. de Qi do BP)</label></div>
+      </div>
+
+      <!-- ========== PULSO ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-heartbeat me-2"></i>Pulso</h3>
+        <div class="row">
+          <div class="col-md-3 mb-2"><label class="form-check-label"><input type="checkbox" name="pulso_rapido" value="sim"> Rápido</label></div>
+          <div class="col-md-3 mb-2"><label class="form-check-label"><input type="checkbox" name="pulso_lento" value="sim"> Lento</label></div>
+          <div class="col-md-3 mb-2"><label class="form-check-label"><input type="checkbox" name="pulso_superficial" value="sim"> Superficial</label></div>
+          <div class="col-md-3 mb-2"><label class="form-check-label"><input type="checkbox" name="pulso_profundo" value="sim"> Profundo</label></div>
+          <div class="col-md-3 mb-2"><label class="form-check-label"><input type="checkbox" name="pulso_cheio" value="sim"> Cheio</label></div>
+          <div class="col-md-3 mb-2"><label class="form-check-label"><input type="checkbox" name="pulso_vazio" value="sim"> Vazio</label></div>
+          <div class="col-md-3 mb-2"><label class="form-check-label"><input type="checkbox" name="pulso_fino" value="sim"> Fino</label></div>
+          <div class="col-md-3 mb-2"><label class="form-check-label"><input type="checkbox" name="pulso_corda" value="sim"> Corda</label></div>
+          <div class="col-md-3 mb-2"><label class="form-check-label"><input type="checkbox" name="pulso_escorregadio" value="sim"> Escorregadio</label></div>
+          <div class="col-md-3 mb-2"><label class="form-check-label"><input type="checkbox" name="pulso_irregular" value="sim"> Irregular</label></div>
+        </div>
+      </div>
+
+      <!-- ========== MEDICAÇÃO EM USO ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-pills me-2"></i>Medicação em uso</h3>
+        <textarea name="medicacao" rows="3" class="form-control" placeholder="Descreva todos os medicamentos que está tomando atualmente..."></textarea>
+      </div>
+
+      <!-- ========== PALPAÇÃO SHU E MO ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-hand-holding-heart me-2"></i>Palpação dos Pontos Shu e Mo</h3>
+        <textarea name="palpacao_shu_mo" rows="3" class="form-control" placeholder="Observações sobre a palpação..."></textarea>
+      </div>
+
+      <!-- ========== PALPAÇÃO AURICULAR ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-ear me-2"></i>Palpação Auricular</h3>
+        <textarea name="palpacao_auricular" rows="3" class="form-control" placeholder="Observações sobre a palpação auricular..."></textarea>
+      </div>
+
+      <!-- ========== FITOTERÁPICOS ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-leaf me-2"></i>Fitoterápicos</h3>
+        <textarea name="fitoterapicos" rows="3" class="form-control" placeholder="Fitoterápicos em uso ou recomendados..."></textarea>
+      </div>
+
+      <!-- ========== PRESCRIÇÕES (22 sessões) ========== -->
+      <div class="anamnese-section">
+        <h3><i class="fas fa-clipboard-list me-2"></i>Prescrições</h3>
+        <p class="text-muted">Preencha as anotações de cada sessão (opcional).</p>
+        <div id="sessoesContainer">
+          <!-- Vamos gerar dinamicamente com JavaScript para não sobrecarregar o HTML -->
+        </div>
+      </div>
+
+      <!-- ====== BOTÃO ENVIAR ====== -->
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-enviar btn-lg text-white">
+          <i class="fas fa-paper-plane me-2"></i>Enviar ficha completa
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Gerar campos para as 22 sessões dinamicamente
+    document.addEventListener('DOMContentLoaded', function() {
+      const container = document.getElementById('sessoesContainer');
+      for (let i = 1; i <= 22; i++) {
+        const div = document.createElement('div');
+        div.className = 'mb-3';
+        div.innerHTML = `
+          <label class="form-label"><strong>${i}ª Sessão</strong></label>
+          <textarea name="sessao_${i}" rows="2" class="form-control" placeholder="Anotações da ${i}ª sessão..."></textarea>
+        `;
+        container.appendChild(div);
+      }
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
