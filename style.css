@@ -60,6 +60,14 @@ h1, h2, h3, h4, h5, .section-title {
   color: var(--secondary);
   opacity: 0.8;
 }
+.hero .btn-outline-light {
+  border-color: rgba(255,255,255,0.5);
+  color: #fff;
+}
+.hero .btn-outline-light:hover {
+  background: #fff;
+  color: var(--primary);
+}
 
 .btn-primary {
   background-color: var(--secondary);

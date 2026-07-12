@@ -7,6 +7,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="pdf-generator.js"></script>
 </head>
 <body>
 
@@ -16,12 +19,63 @@
         <div class="col-lg-6">
           <i class="fas fa-check-circle fa-5x text-success mb-4"></i>
           <h1>Ficha de anamnese enviada!</h1>
-          <p class="lead">Agradecemos pelos detalhes. Nossa equipe já está analisando e em breve entraremos em contato.</p>
-          <a href="/" class="btn btn-primary mt-3">Voltar ao início</a>
+          <p class="lead">Agradecemos pelos detalhes. Nossa equipe já está analisando.</p>
+          
+          <!-- Botão Download PDF -->
+          <button id="btnDownloadPDF" class="btn btn-primary btn-lg mt-3 me-2">
+            <i class="fas fa-file-pdf"></i> Baixar PDF
+          </button>
+          
+          <!-- Botão WhatsApp (envia resumo) -->
+          <button id="btnWhatsAppAnamnese" class="btn btn-success btn-lg mt-3">
+            <i class="fab fa-whatsapp"></i> Enviar via WhatsApp
+          </button>
+          
+          <br>
+          <a href="/" class="btn btn-outline-secondary mt-3">← Voltar ao início</a>
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+    (function() {
+      const dadosAnamnese = sessionStorage.getItem('dadosAnamnese');
+      if (!dadosAnamnese) {
+        alert('Nenhum dado encontrado. Preencha a ficha novamente.');
+        window.location.href = '/anamnese.html';
+        return;
+      }
+      const dados = JSON.parse(dadosAnamnese);
+
+      // Download PDF
+      document.getElementById('btnDownloadPDF').addEventListener('click', function() {
+        if (typeof gerarPDF === 'function') {
+          gerarPDF(dados);
+        } else {
+          alert('Erro ao gerar PDF. Verifique se o arquivo pdf-generator.js foi carregado.');
+        }
+      });
+
+      // Enviar resumo via WhatsApp
+      document.getElementById('btnWhatsAppAnamnese').addEventListener('click', function() {
+        const numero = '5521999999999'; // substitua pelo seu número
+        const mensagem = 
+          `🔹 *Ficha de Anamnese - Lian Huan* 🔹%0A%0A` +
+          `*Nome:* ${dados.nome_completo || 'N/I'}%0A` +
+          `*Data Nasc.:* ${dados.data_nasc || 'N/I'}%0A` +
+          `*Sexo:* ${dados.sexo || 'N/I'}%0A` +
+          `*Telefone:* ${dados.telefone || 'N/I'}%0A` +
+          `*E-mail:* ${dados.email_anamnese || 'N/I'}%0A` +
+          `*Queixa Principal:* ${dados.queixa_principal || 'N/I'}%0A%0A` +
+          `📄 *PDF completo disponível para download no site.*%0A` +
+          `🔗 https://lian-huan-landing.netlify.app/obrigado-anamnese.html (clique em "Baixar PDF")`;
+        
+        const url = `https://wa.me/${numero}?text=${mensagem}`;
+        window.open(url, '_blank');
+      });
+    })();
+  </script>
 
 </body>
 </html>

@@ -18,13 +18,13 @@
           <h1 class="mb-3">Recebemos sua solicitação!</h1>
           <p class="lead">Em breve nossa equipe entrará em contato via WhatsApp.</p>
 
-          <!-- Botão para falar no WhatsApp (já com a mensagem preenchida) -->
+          <!-- Botão para falar no WhatsApp -->
           <button id="btnWhatsApp" class="btn btn-success btn-lg mt-3">
             <i class="fab fa-whatsapp"></i> Falar agora no WhatsApp
           </button>
           <br>
 
-          <!-- Link para preencher a ficha de anamnese completa -->
+          <!-- Link para preencher a anamnese -->
           <div class="mt-4">
             <a href="/anamnese.html" class="btn btn-secondary btn-lg">
               <i class="fas fa-file-medical"></i> Preencher ficha de anamnese
@@ -42,20 +42,13 @@
 
   <script>
     (function() {
-      // Recupera os dados salvos no sessionStorage
       const leadData = sessionStorage.getItem('leadData');
       if (!leadData) {
-        // Se não houver dados, redireciona para a home
         window.location.href = '/';
         return;
       }
-
       const { nome, whatsapp, email, cidade, queixa } = JSON.parse(leadData);
-
-      // Número do WhatsApp do Instituto (substitua pelo seu)
-      const numero = '5521999999999';
-
-      // Monta a mensagem com os dados + link para anamnese
+      const numero = '5521999999999'; // substitua pelo seu número
       const mensagem = `Olá! Meu nome é ${nome} e gostaria de agendar uma avaliação. %0A` +
                        `WhatsApp: ${whatsapp} %0A` +
                        `E-mail: ${email || 'Não informado'} %0A` +
@@ -63,17 +56,10 @@
                        `Principal queixa: ${queixa} %0A%0A` +
                        `🔗 Preencha nossa ficha de anamnese completa: %0A` +
                        `https://lian-huan-landing.netlify.app/anamnese.html`;
-
       const urlWhats = `https://wa.me/${numero}?text=${mensagem}`;
-
-      // Atribui ao botão
-      const btn = document.getElementById('btnWhatsApp');
-      btn.addEventListener('click', function() {
+      document.getElementById('btnWhatsApp').addEventListener('click', function() {
         window.open(urlWhats, '_blank');
       });
-
-      // Opcional: abrir automaticamente após 2 segundos
-      // setTimeout(() => { window.open(urlWhats, '_blank'); }, 1500);
     })();
   </script>
 
