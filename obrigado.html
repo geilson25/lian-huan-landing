@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obrigado – Lian Huan Instituto</title>
+
+  <!-- Bootstrap 5 + Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <section class="obrigado py-5 text-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <i class="fas fa-check-circle fa-5x text-success mb-4"></i>
+          <h1 class="mb-3">Recebemos sua solicitação!</h1>
+          <p class="lead">Em breve nossa equipe entrará em contato via WhatsApp.</p>
+
+          <!-- Botão que abre WhatsApp com os dados salvos -->
+          <button id="btnWhatsApp" class="btn btn-success btn-lg mt-3">
+            <i class="fab fa-whatsapp"></i> Falar agora no WhatsApp
+          </button>
+          <br>
+          <a href="/" class="btn btn-outline-secondary mt-3">← Voltar para a página inicial</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function() {
+      // Recupera os dados salvos no sessionStorage
+      const leadData = sessionStorage.getItem('leadData');
+      if (!leadData) {
+        // Se não houver dados, redireciona para a home
+        window.location.href = '/';
+        return;
+      }
+
+      const { nome, whatsapp, email, cidade, queixa } = JSON.parse(leadData);
+
+      // Número do WhatsApp do Instituto (substitua pelo seu)
+      const numero = '5521999999999'; // Exemplo: 55 + DDD + número
+
+      // Monta a mensagem com os dados
+      const mensagem = `Olá! Meu nome é ${nome} e gostaria de agendar uma avaliação. %0A` +
+                       `WhatsApp: ${whatsapp} %0A` +
+                       `E-mail: ${email || 'Não informado'} %0A` +
+                       `Cidade: ${cidade || 'Não informada'} %0A` +
+                       `Principal queixa: ${queixa}`;
+
+      const urlWhats = `https://wa.me/${numero}?text=${mensagem}`;
+
+      // Atribui ao botão
+      const btn = document.getElementById('btnWhatsApp');
+      btn.addEventListener('click', function() {
+        window.open(urlWhats, '_blank');
+      });
+
+      // Se quiser abrir automaticamente após 2 segundos:
+      // setTimeout(() => { window.open(urlWhats, '_blank'); }, 1500);
+    })();
+  </script>
+
+</body>
+</html>
