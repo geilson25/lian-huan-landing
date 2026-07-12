@@ -263,8 +263,8 @@ function gerarPDF(dados) {
       </div>
       <div class="contato">
         <a href="https://www.instagram.com/lian_huan_instituto/">@lian_huan_instituto</a>
-        · <a href="tel:+5581987710128">(81) 98771-0128</a>
-        · <a href="mailto:contato@lianhuan.com.br">contato@lianhuan.com.br</a>
+        · <a href="tel:+5581987361800">(81) 98736-1800</a>
+#        · <a href="mailto:contato@lianhuan.com.br">contato@lianhuan.com.br</a>
       </div>
       <div style="font-size:9px; color:#8a9a9a; margin-top:6px;">
         Ficha de Anamnese · Lian Huan Instituto de Medicina Tradicional Chinesa
