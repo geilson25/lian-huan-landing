@@ -37,37 +37,48 @@ h1, h2, h3, h4, h5, .section-title {
   margin: 10px 0 0 0;
 }
 
-/* ===== CORREÇÃO DE LINKS - SOBRESCREVENDO BOOTSTRAP ===== */
+/* ===== CORREÇÃO DE LINKS - SOBRESCREVENDO BOOTSTRAP COMPLETAMENTE ===== */
 /* Todos os links, exceto botões, devem ser amarelos/dourados */
-a:not(.btn):not(.nav-link) {
+a:not(.btn) {
   color: var(--secondary) !important;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 /* Links visitados mantêm a mesma cor */
-a:not(.btn):not(.nav-link):visited {
+a:not(.btn):visited {
   color: var(--secondary) !important;
 }
 
 /* Hover nos links - tom mais escuro e sublinhado */
-a:not(.btn):not(.nav-link):hover {
+a:not(.btn):hover {
   color: #b8890e !important;
   text-decoration: underline;
 }
 
-/* Links específicos que precisam de cor diferente (ex: textos claros no rodapé) */
-.rodape a:not(.btn):not(.nav-link) {
+/* Links internos (âncoras) também devem ser amarelos */
+a[href^="#"]:not(.btn) {
+  color: var(--secondary) !important;
+}
+a[href^="#"]:not(.btn):visited {
+  color: var(--secondary) !important;
+}
+a[href^="#"]:not(.btn):hover {
+  color: #b8890e !important;
+}
+
+/* Links do rodapé (que devem ser brancos) */
+.rodape a:not(.btn) {
   color: #fff !important;
 }
-.rodape a:not(.btn):not(.nav-link):visited {
+.rodape a:not(.btn):visited {
   color: #fff !important;
 }
-.rodape a:not(.btn):not(.nav-link):hover {
+.rodape a:not(.btn):hover {
   color: var(--secondary) !important;
 }
 
-/* Links de destaque (secundários) - já estão com a classe correta */
+/* Links com classes específicas (mantêm suas cores) */
 .link-secondary {
   color: var(--secondary) !important;
 }
