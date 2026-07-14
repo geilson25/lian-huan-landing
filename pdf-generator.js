@@ -262,7 +262,6 @@ function gerarPDF(dados) {
     ${gerarTextoLongoGlass('Fitoterápicos', dados.fitoterapicos, 'fa-leaf')}
     ${gerarSessoesGlass(dados)}
 
-    <!-- RODAPÉ DO PDF - SEM E-MAIL -->
     <div class="footer">
       <div class="terapeutas">
         José Ivo Sampaio <span>·</span> Terapeuta &nbsp;|&nbsp; Danielle Sampaio <span>·</span> Terapeuta

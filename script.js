@@ -1,3 +1,4 @@
+// ===== MÁSCARA PARA TELEFONE (lead) =====
 document.addEventListener('DOMContentLoaded', function() {
   const inputTel = document.getElementById('whatsapp');
   if (inputTel) {
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // ===== SALVAR DADOS DO LEAD NO SESSIONSTORAGE =====
   const formLead = document.querySelector('form[name="lead-form"]');
   if (formLead) {
     formLead.addEventListener('submit', function(e) {
@@ -28,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // ===== SCROLL SUAVE =====
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const href = this.getAttribute('href');

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lian-huan-landing.netlify.app/sitemap.xml
