@@ -1,3 +1,4 @@
+/* ===== RESET E VARIÁVEIS ===== */
 :root {
   --primary: #2a5c3a;
   --secondary: #d4a017;
@@ -33,6 +34,7 @@ h1, h2, h3, h4, h5, .section-title {
   border-radius: 2px;
 }
 
+/* ===== HERO ===== */
 .hero {
   background: linear-gradient(135deg, var(--primary) 0%, #1f4a2d 100%);
   color: #fff;
@@ -67,6 +69,7 @@ h1, h2, h3, h4, h5, .section-title {
   color: var(--primary);
 }
 
+/* ===== BOTÕES ===== */
 .btn-primary {
   background-color: var(--secondary);
   border-color: var(--secondary);
@@ -83,18 +86,26 @@ h1, h2, h3, h4, h5, .section-title {
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-.beneficios {
+/* ===== SEÇÕES ===== */
+.sobre i, .evidencias i {
+  color: var(--primary);
+}
+
+/* ===== DEPOIMENTOS ===== */
+.depoimentos .card {
+  border: none;
+  background: #fff;
+  transition: 0.3s;
+}
+.depoimentos .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+/* ===== FORMULÁRIO ===== */
+.formulario {
   background: var(--light-bg);
 }
-.beneficios i {
-  color: var(--primary);
-}
-
-.tratamentos i {
-  color: var(--primary);
-  font-size: 3rem;
-}
-
 .formulario form {
   border: 1px solid #e0dcd5;
 }
@@ -108,16 +119,7 @@ h1, h2, h3, h4, h5, .section-title {
   border-color: #1f4a2d;
 }
 
-.depoimentos .card {
-  border: none;
-  background: #fff;
-  transition: 0.3s;
-}
-.depoimentos .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-}
-
+/* ===== RODAPÉ ===== */
 .rodape {
   background: var(--primary);
   color: #fff;
@@ -131,6 +133,7 @@ h1, h2, h3, h4, h5, .section-title {
   color: var(--primary);
 }
 
+/* ===== OBRIGADO ===== */
 .obrigado {
   min-height: 100vh;
   display: flex;
@@ -146,6 +149,7 @@ h1, h2, h3, h4, h5, .section-title {
   font-weight: 600;
 }
 
+/* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
   .hero h1 {
     font-size: 2.2rem;
@@ -158,6 +162,7 @@ h1, h2, h3, h4, h5, .section-title {
   }
 }
 
+/* ===== ESTILOS PARA A ANAMNESE ===== */
 .anamnese-section {
   background: #fff;
   border-radius: 12px;
