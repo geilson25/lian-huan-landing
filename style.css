@@ -1,3 +1,401 @@
+/* ===== RESET E VARIÁVEIS ===== */
+:root {
+  --primary: #2a5c3a;
+  --secondary: #d4a017;
+  --light-bg: #f8f6f0;
+  --text-dark: #1e2b2a;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Open Sans', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background: #fff;
+}
+
+h1, h2, h3, h4, h5, .section-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--secondary);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+.section-title.text-start::after {
+  margin: 10px 0 0 0;
+}
+
+/* ===== CORREÇÃO DE LINKS - SOBRESCREVENDO BOOTSTRAP ===== */
+/* Todos os links, exceto botões, devem ser amarelos/dourados */
+a:not(.btn) {
+  color: var(--secondary) !important;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Links visitados mantêm a mesma cor */
+a:not(.btn):visited {
+  color: var(--secondary) !important;
+}
+
+/* Hover nos links - tom mais escuro e sublinhado */
+a:not(.btn):hover {
+  color: #b8890e !important;
+  text-decoration: underline;
+}
+
+/* Links internos (âncoras) também devem ser amarelos */
+a[href^="#"]:not(.btn) {
+  color: var(--secondary) !important;
+}
+a[href^="#"]:not(.btn):visited {
+  color: var(--secondary) !important;
+}
+a[href^="#"]:not(.btn):hover {
+  color: #b8890e !important;
+}
+
+/* Links do rodapé (que devem ser brancos) */
+.rodape a:not(.btn) {
+  color: #fff !important;
+}
+.rodape a:not(.btn):visited {
+  color: #fff !important;
+}
+.rodape a:not(.btn):hover {
+  color: var(--secondary) !important;
+}
+
+/* Links com classes específicas (mantêm suas cores) */
+.link-secondary {
+  color: var(--secondary) !important;
+}
+.link-secondary:visited {
+  color: var(--secondary) !important;
+}
+.link-secondary:hover {
+  color: #b8890e !important;
+}
+
+.link-primary {
+  color: var(--primary) !important;
+}
+.link-primary:visited {
+  color: var(--primary) !important;
+}
+.link-primary:hover {
+  color: #1f4a2d !important;
+}
+
+.link-highlight {
+  color: var(--secondary) !important;
+}
+.link-highlight:visited {
+  color: var(--secondary) !important;
+}
+.link-highlight:hover {
+  color: #b8890e !important;
+}
+
+.link-muted {
+  color: #8a9a9a !important;
+}
+.link-muted:visited {
+  color: #8a9a9a !important;
+}
+.link-muted:hover {
+  color: var(--secondary) !important;
+}
+
+/* ===== ICONES ===== */
+.icon-primary {
+  color: var(--primary);
+}
+.icon-secondary {
+  color: var(--secondary);
+}
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, #1f4a2d 100%);
+  color: #fff;
+  padding: 80px 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.hero .logo-hero {
+  max-width: 200px;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+.hero h1 {
+  font-size: 3.2rem;
+  line-height: 1.2;
+}
+.hero h1 span {
+  color: var(--secondary);
+}
+.hero .icon-hero {
+  font-size: 10rem;
+  color: var(--secondary);
+  opacity: 0.8;
+}
+.hero .btn-outline-light {
+  border-color: rgba(255,255,255,0.5);
+  color: #fff;
+}
+.hero .btn-outline-light:hover {
+  background: #fff;
+  color: var(--primary);
+}
+
+/* ===== BOTÕES ===== */
+.btn-primary {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+  color: #1e2b2a;
+  font-weight: 600;
+  padding: 12px 40px;
+  border-radius: 50px;
+  transition: all 0.3s;
+}
+.btn-primary:hover {
+  background-color: #b8890e;
+  border-color: #b8890e;
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  color: #1e2b2a;
+}
+
+.btn-instagram {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: #fff;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 50px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.btn-instagram:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+  color: #fff;
+}
+
+/* ===== SOBRE ===== */
+.sobre .profile-img {
+  border: 4px solid var(--secondary);
+  max-width: 100%;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+/* ===== TRATAMENTOS ===== */
+.treatment-card {
+  border: none;
+  transition: 0.3s;
+}
+.treatment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+.treatment-card a {
+  text-decoration: none;
+  font-weight: 600;
+}
+.treatment-card a:hover {
+  text-decoration: underline;
+}
+.treatment-card .text-muted {
+  font-size: 0.85rem;
+}
+
+/* ===== DEPOIMENTOS ===== */
+.testimonial-card {
+  border: none;
+  background: #fff;
+  transition: 0.3s;
+}
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+.testimonial-card a {
+  text-decoration: none;
+  font-weight: 600;
+}
+.testimonial-card a:hover {
+  text-decoration: underline;
+}
+
+/* ===== LOCALIZAÇÃO ===== */
+.localizacao .card {
+  border: none;
+  background: #fff;
+  transition: 0.3s;
+}
+.localizacao .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+.localizacao .ratio {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ===== INSTAGRAM ===== */
+.instagram {
+  background: linear-gradient(135deg, #f8f6f0 0%, #fff 100%);
+}
+.instagram-embed {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.instagram-embed iframe {
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* ===== FORMULÁRIO ===== */
+.formulario {
+  background: var(--light-bg);
+}
+.formulario form {
+  border: 1px solid #e0dcd5;
+}
+.formulario .btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+.formulario .btn-primary:hover {
+  background-color: #1f4a2d;
+  border-color: #1f4a2d;
+  color: #fff;
+}
+.formulario .link-primary {
+  text-decoration: none;
+  font-weight: 600;
+}
+.formulario .link-primary:hover {
+  text-decoration: underline;
+}
+
+/* ===== RODAPÉ ===== */
+.rodape {
+  background: var(--primary);
+  color: #fff;
+}
+.rodape h5 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--secondary);
+}
+.rodape .btn-outline-light {
+  border-color: rgba(255,255,255,0.3);
+  color: #fff;
+}
+.rodape .btn-outline-light:hover {
+  background: #fff;
+  color: var(--primary);
+}
+.rodape .text-light {
+  text-decoration: none;
+}
+.rodape .text-light:hover {
+  color: var(--secondary) !important;
+}
+.rodape hr {
+  border-color: rgba(255,255,255,0.1);
+}
+.rodape .link-secondary {
+  color: var(--secondary);
+  text-decoration: none;
+}
+.rodape .link-secondary:hover {
+  text-decoration: underline;
+}
+.rodape .link-muted {
+  color: #8a9a9a;
+  text-decoration: none;
+}
+.rodape .link-muted:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+/* ===== OBRIGADO ===== */
+.obrigado {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--light-bg);
+}
+.obrigado .btn-success {
+  background-color: #25D366;
+  border: none;
+  padding: 12px 36px;
+  border-radius: 50px;
+  font-weight: 600;
+}
+.obrigado .btn-success:hover {
+  background-color: #1da851;
+  color: #fff;
+}
+
+/* ===== ANAMNESE ===== */
+.anamnese-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.anamnese-section h3 {
+  color: var(--primary);
+  font-family: var(--font-heading);
+  border-bottom: 2px solid var(--secondary);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+.btn-enviar {
+  background: var(--primary);
+  border: none;
+  padding: 12px 40px;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: 0.3s;
+}
+.btn-enviar:hover {
+  background: #1f4a2d;
+  transform: scale(1.02);
+  color: #fff;
+}
+.is-invalid {
+  border-color: #dc3545 !important;
+}
+.invalid-feedback {
+  display: none;
+  font-size: 0.875rem;
+  color: #dc3545;
+}
+.is-invalid ~ .invalid-feedback {
+  display: block;
+}
+
 /* ===== BOTÕES DE REDES SOCIAIS ===== */
 .btn-social {
   display: inline-flex;
@@ -81,4 +479,25 @@
   background: var(--secondary);
   border-color: var(--secondary);
   color: #1e2b2a;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .hero .logo-hero {
+    max-width: 150px;
+  }
+  .sobre .profile-img {
+    max-width: 200px !important;
+  }
+}
+
+/* ===== CORREÇÃO ESPECÍFICA PARA LINKS EM IMAGENS E ÍCONES ===== */
+a img {
+  border: none;
 }
