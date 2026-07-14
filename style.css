@@ -37,6 +37,51 @@ h1, h2, h3, h4, h5, .section-title {
   margin: 10px 0 0 0;
 }
 
+/* ===== LINKS ===== */
+.link-highlight {
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: 600;
+}
+.link-highlight:hover {
+  text-decoration: underline;
+}
+
+.link-primary {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+.link-primary:hover {
+  text-decoration: underline;
+}
+
+.link-secondary {
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: 600;
+}
+.link-secondary:hover {
+  text-decoration: underline;
+}
+
+.link-muted {
+  color: #8a9a9a;
+  text-decoration: none;
+}
+.link-muted:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+/* ===== ICONES ===== */
+.icon-primary {
+  color: var(--primary);
+}
+.icon-secondary {
+  color: var(--secondary);
+}
+
 /* ===== HERO ===== */
 .hero {
   background: linear-gradient(135deg, var(--primary) 0%, #1f4a2d 100%);
@@ -89,29 +134,62 @@ h1, h2, h3, h4, h5, .section-title {
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-/* ===== SOBRE ===== */
-.sobre i {
-  color: var(--primary);
+.btn-instagram {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: #fff;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 50px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
-.sobre .rounded-circle {
+.btn-instagram:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+}
+
+/* ===== SOBRE ===== */
+.sobre .profile-img {
+  border: 4px solid var(--secondary);
+  max-width: 100%;
   box-shadow: 0 8px 30px rgba(0,0,0,0.1);
 }
 
-/* ===== EVIDÊNCIAS ===== */
-.evidencias .card {
+/* ===== TRATAMENTOS ===== */
+.treatment-card {
   border: none;
   transition: 0.3s;
 }
-.evidencias .card:hover {
+.treatment-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
-.evidencias .card a {
-  color: var(--secondary);
+.treatment-card a {
   text-decoration: none;
   font-weight: 600;
 }
-.evidencias .card a:hover {
+.treatment-card a:hover {
+  text-decoration: underline;
+}
+.treatment-card .text-muted {
+  font-size: 0.85rem;
+}
+
+/* ===== DEPOIMENTOS ===== */
+.testimonial-card {
+  border: none;
+  background: #fff;
+  transition: 0.3s;
+}
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+.testimonial-card a {
+  text-decoration: none;
+  font-weight: 600;
+}
+.testimonial-card a:hover {
   text-decoration: underline;
 }
 
@@ -130,30 +208,15 @@ h1, h2, h3, h4, h5, .section-title {
   overflow: hidden;
 }
 
-/* ===== DEPOIMENTOS ===== */
-.depoimentos .card {
-  border: none;
-  background: #fff;
-  transition: 0.3s;
-}
-.depoimentos .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-}
-
 /* ===== INSTAGRAM ===== */
 .instagram {
   background: linear-gradient(135deg, #f8f6f0 0%, #fff 100%);
 }
-.instagram .btn {
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: 0.3s;
+.instagram-embed {
+  max-width: 600px;
+  margin: 0 auto;
 }
-.instagram .btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 25px rgba(0,0,0,0.15);
-}
-.instagram .ratio iframe {
+.instagram-embed iframe {
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
@@ -174,6 +237,13 @@ h1, h2, h3, h4, h5, .section-title {
   background-color: #1f4a2d;
   border-color: #1f4a2d;
 }
+.formulario .link-primary {
+  text-decoration: none;
+  font-weight: 600;
+}
+.formulario .link-primary:hover {
+  text-decoration: underline;
+}
 
 /* ===== RODAPÉ ===== */
 .rodape {
@@ -193,14 +263,29 @@ h1, h2, h3, h4, h5, .section-title {
   background: #fff;
   color: var(--primary);
 }
-.rodape a.text-light {
+.rodape .text-light {
   text-decoration: none;
 }
-.rodape a.text-light:hover {
+.rodape .text-light:hover {
   color: var(--secondary) !important;
 }
 .rodape hr {
   border-color: rgba(255,255,255,0.1);
+}
+.rodape .link-secondary {
+  color: var(--secondary);
+  text-decoration: none;
+}
+.rodape .link-secondary:hover {
+  text-decoration: underline;
+}
+.rodape .link-muted {
+  color: #8a9a9a;
+  text-decoration: none;
+}
+.rodape .link-muted:hover {
+  color: var(--secondary);
+  text-decoration: underline;
 }
 
 /* ===== OBRIGADO ===== */
@@ -269,7 +354,7 @@ h1, h2, h3, h4, h5, .section-title {
   .hero .logo-hero {
     max-width: 150px;
   }
-  .sobre .rounded-circle {
+  .sobre .profile-img {
     max-width: 200px !important;
   }
 }
