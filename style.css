@@ -37,54 +37,75 @@ h1, h2, h3, h4, h5, .section-title {
   margin: 10px 0 0 0;
 }
 
-/* ===== LINKS - CORRIGIDOS (NÃO AZUIS) ===== */
-a {
-  color: var(--primary);
+/* ===== CORREÇÃO DE LINKS - SOBRESCREVENDO BOOTSTRAP ===== */
+/* Todos os links, exceto botões, devem ser amarelos/dourados */
+a:not(.btn):not(.nav-link) {
+  color: var(--secondary) !important;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
-a:hover {
-  color: var(--secondary);
+
+/* Links visitados mantêm a mesma cor */
+a:not(.btn):not(.nav-link):visited {
+  color: var(--secondary) !important;
+}
+
+/* Hover nos links - tom mais escuro e sublinhado */
+a:not(.btn):not(.nav-link):hover {
+  color: #b8890e !important;
   text-decoration: underline;
 }
 
-.link-highlight {
-  color: var(--secondary);
-  text-decoration: none;
-  font-weight: 600;
+/* Links específicos que precisam de cor diferente (ex: textos claros no rodapé) */
+.rodape a:not(.btn):not(.nav-link) {
+  color: #fff !important;
 }
-.link-highlight:hover {
-  text-decoration: underline;
-  color: #b8890e;
+.rodape a:not(.btn):not(.nav-link):visited {
+  color: #fff !important;
+}
+.rodape a:not(.btn):not(.nav-link):hover {
+  color: var(--secondary) !important;
+}
+
+/* Links de destaque (secundários) - já estão com a classe correta */
+.link-secondary {
+  color: var(--secondary) !important;
+}
+.link-secondary:visited {
+  color: var(--secondary) !important;
+}
+.link-secondary:hover {
+  color: #b8890e !important;
 }
 
 .link-primary {
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 600;
+  color: var(--primary) !important;
+}
+.link-primary:visited {
+  color: var(--primary) !important;
 }
 .link-primary:hover {
-  text-decoration: underline;
-  color: #1f4a2d;
+  color: #1f4a2d !important;
 }
 
-.link-secondary {
-  color: var(--secondary);
-  text-decoration: none;
-  font-weight: 600;
+.link-highlight {
+  color: var(--secondary) !important;
 }
-.link-secondary:hover {
-  text-decoration: underline;
-  color: #b8890e;
+.link-highlight:visited {
+  color: var(--secondary) !important;
+}
+.link-highlight:hover {
+  color: #b8890e !important;
 }
 
 .link-muted {
-  color: #8a9a9a;
-  text-decoration: none;
+  color: #8a9a9a !important;
+}
+.link-muted:visited {
+  color: #8a9a9a !important;
 }
 .link-muted:hover {
-  color: var(--secondary);
-  text-decoration: underline;
+  color: var(--secondary) !important;
 }
 
 /* ===== ICONES ===== */
@@ -378,4 +399,9 @@ a:hover {
   .sobre .profile-img {
     max-width: 200px !important;
   }
+}
+
+/* ===== CORREÇÃO ESPECÍFICA PARA LINKS EM IMAGENS E ÍCONES ===== */
+a img {
+  border: none;
 }
