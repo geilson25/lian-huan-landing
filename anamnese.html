@@ -3,11 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ficha de Anamnese – Lian Huan</title>
+  <title>Ficha de Anamnese – Instituto Lian Huan | Medicina Tradicional Chinesa</title>
+  <meta name="description" content="Preencha a ficha de anamnese do Instituto Lian Huan para uma avaliação completa em Medicina Tradicional Chinesa. Agende sua consulta em Caruaru.">
+  <meta name="robots" content="index, follow">
+  
+  <!-- CANONICAL TAG -->
+  <link rel="canonical" href="https://lian-huan-landing.netlify.app/anamnese.html">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ficha de Anamnese – Instituto Lian Huan">
+  <meta property="og:description" content="Preencha sua ficha de anamnese para uma avaliação completa em Medicina Tradicional Chinesa.">
+  <meta property="og:image" content="https://lian-huan-landing.netlify.app/logo.png">
+  <meta property="og:url" content="https://lian-huan-landing.netlify.app/anamnese.html">
+  <meta property="og:type" content="website">
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  
   <style>
     .anamnese-section {
       background: #fff;
@@ -46,13 +60,16 @@
     .is-invalid ~ .invalid-feedback {
       display: block;
     }
+    #sangue-apetite-container {
+      display: none;
+    }
   </style>
 </head>
 <body>
 
   <div class="container py-5">
     <div class="text-center mb-4">
-      <img src="logo.png" alt="Lian Huan" style="max-height:80px;">
+      <img src="logo.png" alt="Logo do Instituto Lian Huan - Ficha de Anamnese" loading="lazy" style="max-height:80px;" width="80" height="auto">
       <h1 class="section-title mt-3">Ficha de Anamnese</h1>
       <p class="text-muted">Preencha com atenção. Todos os dados são confidenciais.</p>
     </div>
@@ -236,9 +253,15 @@
         <div class="form-check"><input class="form-check-input" type="checkbox" name="men_irregular" value="sim"><label class="form-check-label">Ciclo irregular (atrasa ou adianta). (Estagnação Qi do fígado, def. baço/rim)</label></div>
         <div class="form-check"><input class="form-check-input" type="checkbox" name="men_tpm_distensao" value="sim"><label class="form-check-label">TPM com distensão abdominal, displasia mamária, irritabilidade, amenorréia, dismenorréia. (Estagnação Qi do fígado)</label></div>
         <div class="form-check"><input class="form-check-input" type="checkbox" name="men_tpm_coagulos" value="sim"><label class="form-check-label">TPM com dismenorréia, sangramento escuro, coágulos, fisgadas no ovário no período ovulatório. (Estagnação Xue do fígado)</label></div>
+        <div id="sangue-apetite-container">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sangue_apetite" value="sim">
+            <label class="form-check-label">Aumento do apetite no período menstrual, parto cesárea, fraqueza no período/pós-menstruação, cirurgias. (Def. Xue do fígado)</label>
+          </div>
+        </div>
       </div>
 
-      <!-- ====== CORRIMENTOS (condicional - aparece apenas para Feminino) ====== -->
+      <!-- ====== CORRIMENTOS (condicional) ====== -->
       <div id="corrimentos-section" class="anamnese-section" style="display: none;">
         <h3><i class="fas fa-tint me-2"></i>Corrimentos</h3>
         <div class="form-check"><input class="form-check-input" type="checkbox" name="corr_branco" value="sim"><label class="form-check-label">Corrimento branco, transparente ou abundante. (Umidade, def. Yang do baço)</label></div>
@@ -249,7 +272,7 @@
 
       <!-- ====== SÍNDROMES BI ====== -->
       <div class="anamnese-section">
-        <h3><i class="fas fa-bolt me-2"></i>Síndromes Bi</h3>
+        <h3><i class="fas fa-bolt me-2"></i>Síndromes Bi <span style="font-size:12px;font-weight:400;color:#666;">(dores articulares/reumáticas causadas por fatores externos)</span></h3>
         <div class="form-check"><input class="form-check-input" type="checkbox" name="bi_frio" value="sim"><label class="form-check-label">Piora com o frio, gelo, repouso, sensação de frio local. (Frio)</label></div>
         <div class="form-check"><input class="form-check-input" type="checkbox" name="bi_calor" value="sim"><label class="form-check-label">Piora com o calor, movimento, calor local, vermelhidão, coceira. (Calor)</label></div>
         <div class="form-check"><input class="form-check-input" type="checkbox" name="bi_umidade" value="sim"><label class="form-check-label">Tez brilhante, inchaço local, pior no clima úmido. (Umidade)</label></div>
@@ -262,30 +285,81 @@
         <h3><i class="fas fa-droplet me-2"></i>Sangue</h3>
         <div class="form-check"><input class="form-check-input" type="checkbox" name="sangue_tontura" value="sim"><label class="form-check-label">Tontura ao levantar rápido, enxaqueca difusa ao final do dia, unhas fracas, queda de cabelos, manchas no campo visual, histórico de anemias. (Def. Xue do fígado)</label></div>
         <div class="form-check"><input class="form-check-input" type="checkbox" name="sangue_caimbras" value="sim"><label class="form-check-label">Câimbras, tiques palpebrais, espasmos migratórios, bruxismo, enxaqueca tensional, tensão/endurecimento do trapézio. (Def. Xue e agitação do vento do fígado)</label></div>
-        <div class="form-check"><input class="form-check-input" type="checkbox" name="sangue_apetite" value="sim"><label class="form-check-label">Aumento do apetite no período menstrual, parto cesárea, fraqueza no período/pós-menstruação, cirurgias. (Def. Xue do fígado)</label></div>
       </div>
 
       <!-- ====== LÍNGUA ====== -->
       <div class="anamnese-section">
-        <h3><i class="fas fa-comment me-2"></i>Língua</h3>
+        <h3><i class="fas fa-comment me-2"></i>Língua <span style="font-size:12px;font-weight:400;color:#666;">(exame da cor, forma e revestimento da língua)</span></h3>
         <div class="row">
-          <div class="col-md-3 mb-2"><label class="form-label">Cor</label><select name="lingua_cor" class="form-select"><option value="">Selecione...</option><option>Normal</option><option>Pálida</option><option>Vermelha</option><option>Vermelha escura</option><option>Púrpura</option></select></div>
-          <div class="col-md-3 mb-2"><label class="form-label">Forma</label><select name="lingua_forma" class="form-select"><option value="">Selecione...</option><option>Rachadura</option><option>Desviada</option><option>Longa</option><option>Curta</option><option>Trêmula</option><option>Marcas de dentes</option><option>Inchada</option><option>Fina</option></select></div>
-          <div class="col-md-3 mb-2"><label class="form-label">Saburra</label><select name="lingua_saburra" class="form-select"><option value="">Selecione...</option><option>Espessa</option><option>Muito espessa</option><option>Pegajosa</option><option>Branca</option><option>Amarela</option><option>Preta</option></select></div>
-          <div class="col-md-3 mb-2"><label class="form-label">Umidade</label><select name="lingua_umidade" class="form-select"><option value="">Selecione...</option><option>Muito úmida</option><option>Pegajosa</option><option>Seca</option></select></div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label">Cor da Língua</label>
+            <select name="lingua_cor" class="form-select">
+              <option value="">Selecione...</option>
+              <option value="Normal">Normal (Rosada/saudável)</option>
+              <option value="Pálida">Pálida (Branca/fraca)</option>
+              <option value="Vermelha">Vermelha (Inflamação/calor)</option>
+              <option value="Vermelha escura">Vermelha escura (Calor intenso)</option>
+              <option value="Púrpura">Púrpura (Estagnação de sangue)</option>
+            </select>
+          </div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label">Forma da Língua</label>
+            <select name="lingua_forma" class="form-select">
+              <option value="">Selecione...</option>
+              <option value="Normal">Normal</option>
+              <option value="Rachadura">Com rachaduras (Fissuras)</option>
+              <option value="Desviada">Desviada (Para um lado)</option>
+              <option value="Longa">Longa (Alongada)</option>
+              <option value="Curta">Curta (Recolhida)</option>
+              <option value="Trêmula">Trêmula (Tremedeira)</option>
+              <option value="Marcas de dentes">Marcas de dentes nas bordas</option>
+              <option value="Inchada">Inchada (Edemaciada)</option>
+              <option value="Fina">Fina (Magra)</option>
+            </select>
+          </div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label">Saburra (Revestimento)</label>
+            <select name="lingua_saburra" class="form-select">
+              <option value="">Selecione...</option>
+              <option value="Espessa">Espessa</option>
+              <option value="Muito espessa">Muito espessa</option>
+              <option value="Pegajosa">Pegajosa</option>
+              <option value="Branca">Branca</option>
+              <option value="Amarela">Amarela</option>
+              <option value="Preta">Preta</option>
+            </select>
+          </div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label">Umidade da Língua</label>
+            <select name="lingua_umidade" class="form-select">
+              <option value="">Selecione...</option>
+              <option value="Muito úmida">Muito úmida</option>
+              <option value="Pegajosa">Pegajosa (Viscosa)</option>
+              <option value="Seca">Seca</option>
+            </select>
+          </div>
         </div>
-        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_palida_seca" value="sim"><label class="form-check-label">Pálida e seca (def. Xue)</label></div>
-        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_palida_umida" value="sim"><label class="form-check-label">Pálida e úmida (def. Yang Qi)</label></div>
-        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_vermelha" value="sim"><label class="form-check-label">Vermelha (calor, def. Yin Qi)</label></div>
-        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_vermelha_areas" value="sim"><label class="form-check-label">Vermelha com áreas avermelhadas (estagnação de Xue)</label></div>
-        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_ulcerada" value="sim"><label class="form-check-label">Ulcerada e vermelha (ascensão de fogo do C)</label></div>
-        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_fissuras" value="sim"><label class="form-check-label">Com fissuras (calor excessivo, def. Yin Qi do R)</label></div>
-        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_purpura" value="sim"><label class="form-check-label">Púrpura ou violácea (estase de Xue)</label></div>
-        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_saburra_branca" value="sim"><label class="form-check-label">Saburra branca (frio interno)</label></div>
-        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_saburra_amarela" value="sim"><label class="form-check-label">Saburra amarela (calor interno)</label></div>
-        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_sem_saburra" value="sim"><label class="form-check-label">Sem saburra (insuficiência de Qi do E)</label></div>
-        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_denteada" value="sim"><label class="form-check-label">Denteada (umidade, def. Qi do BP)</label></div>
-        <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_inchada" value="sim"><label class="form-check-label">Inchada (umidade em BP)</label></div>
+        <p class="text-muted small mt-2">Marque abaixo características adicionais observadas:</p>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_palida_seca" value="sim"><label class="form-check-label">Pálida e seca (Falta de sangue/umidade)</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_palida_umida" value="sim"><label class="form-check-label">Pálida e úmida (Falta de energia Yang)</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_vermelha" value="sim"><label class="form-check-label">Vermelha (Calor ou falta de Yin)</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_vermelha_areas" value="sim"><label class="form-check-label">Vermelha com manchas (Estagnação de sangue)</label></div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_ulcerada" value="sim"><label class="form-check-label">Ulcerada/ferida (Fogo no coração)</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_fissuras" value="sim"><label class="form-check-label">Com fissuras/rachaduras (Calor excessivo)</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_purpura" value="sim"><label class="form-check-label">Púrpura/arroxeada (Estase de sangue)</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_saburra_branca" value="sim"><label class="form-check-label">Saburra branca (Frio interno)</label></div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_saburra_amarela" value="sim"><label class="form-check-label">Saburra amarela (Calor interno)</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_sem_saburra" value="sim"><label class="form-check-label">Sem saburra (Falta de energia do Estômago)</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_denteada" value="sim"><label class="form-check-label">Marcas de dentes (Umidade/falta de Qi)</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="lingua_inchada" value="sim"><label class="form-check-label">Inchada (Umidade no Baço)</label></div>
+          </div>
+        </div>
       </div>
 
       <!-- ====== SABORES ====== -->
@@ -321,7 +395,7 @@
         <div class="form-check"><input class="form-check-input" type="checkbox" name="olhos_lacrimejamento" value="sim"><label class="form-check-label">Lacrimejamento (Qi perverso vento)</label></div>
       </div>
 
-      <!-- ====== OUVIDOS E AUDIÇÃO ====== -->
+      <!-- ====== OUVIDOS ====== -->
       <div class="anamnese-section">
         <h3><i class="fas fa-ear me-2"></i>Ouvidos e Audição</h3>
         <div class="form-check"><input class="form-check-input" type="checkbox" name="ouv_zumbido" value="sim"><label class="form-check-label">Zumbido (def. Yin Qi na B e R, vento)</label></div>
@@ -331,7 +405,7 @@
         <div class="form-check"><input class="form-check-input" type="checkbox" name="ouv_surdez_subita" value="sim"><label class="form-check-label">Surdez súbita (fogo no F)</label></div>
       </div>
 
-      <!-- ====== NARIZ E OLFATO ====== -->
+      <!-- ====== NARIZ ====== -->
       <div class="anamnese-section">
         <h3><i class="fas fa-nose me-2"></i>Nariz e Olfato</h3>
         <div class="form-check"><input class="form-check-input" type="checkbox" name="nariz_fraco" value="sim"><label class="form-check-label">Olfato fraco (def. Yin Qi dos P, Qi perverso vento/frio)</label></div>
@@ -385,13 +459,13 @@
 
       <!-- ====== PALPAÇÃO SHU E MO ====== -->
       <div class="anamnese-section">
-        <h3><i class="fas fa-hand-holding-heart me-2"></i>Palpação dos Pontos Shu e Mo</h3>
+        <h3><i class="fas fa-hand-holding-heart me-2"></i>Palpação dos Pontos Shu e Mo <span style="font-size:12px;font-weight:400;color:#666;">(avaliação de pontos nas costas e abdômen)</span></h3>
         <textarea name="palpacao_shu_mo" rows="3" class="form-control" placeholder="Observações sobre a palpação..."></textarea>
       </div>
 
       <!-- ====== PALPAÇÃO AURICULAR ====== -->
       <div class="anamnese-section">
-        <h3><i class="fas fa-ear me-2"></i>Palpação Auricular</h3>
+        <h3><i class="fas fa-ear me-2"></i>Palpação Auricular <span style="font-size:12px;font-weight:400;color:#666;">(avaliação de pontos na orelha)</span></h3>
         <textarea name="palpacao_auricular" rows="3" class="form-control" placeholder="Observações sobre a palpação auricular..."></textarea>
       </div>
 
@@ -417,8 +491,8 @@
     </form>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="script.js" defer></script>
   <script>
     // ===== GERAR SESSÕES DINAMICAMENTE =====
     document.addEventListener('DOMContentLoaded', function() {
@@ -482,6 +556,7 @@
       const isFeminino = this.value === 'Feminino';
       document.getElementById('menstruacao-section').style.display = isFeminino ? 'block' : 'none';
       document.getElementById('corrimentos-section').style.display = isFeminino ? 'block' : 'none';
+      document.getElementById('sangue-apetite-container').style.display = isFeminino ? 'block' : 'none';
     });
 
     // ===== SALVAR DADOS NO SESSIONSTORAGE =====

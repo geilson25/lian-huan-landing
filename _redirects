@@ -1,3 +1,7 @@
+# Redirecionamento 301 para consolidar www vs non-www
+https://www.lian-huan-landing.netlify.app/*  https://lian-huan-landing.netlify.app/:splat  301
+
+# Redirecionamentos internos
 /  /index.html  200
 /obrigado  /obrigado.html  200
 /anamnese  /anamnese.html  200

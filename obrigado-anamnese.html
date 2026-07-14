@@ -3,8 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ficha enviada – Lian Huan</title>
+  <title>Ficha enviada – Instituto Lian Huan | Anamnese Recebida</title>
+  <meta name="description" content="Sua ficha de anamnese foi enviada com sucesso para o Instituto Lian Huan. Agradecemos pelos detalhes.">
   <meta name="robots" content="noindex, follow">
+  
+  <!-- CANONICAL TAG -->
+  <link rel="canonical" href="https://lian-huan-landing.netlify.app/obrigado-anamnese.html">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ficha enviada – Instituto Lian Huan">
+  <meta property="og:description" content="Sua ficha de anamnese foi enviada com sucesso para o Instituto Lian Huan.">
+  <meta property="og:image" content="https://lian-huan-landing.netlify.app/logo.png">
+  <meta property="og:url" content="https://lian-huan-landing.netlify.app/obrigado-anamnese.html">
+  <meta property="og:type" content="website">
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
@@ -13,30 +25,44 @@
   <script src="pdf-generator.js" defer></script>
 </head>
 <body>
+
   <section class="obrigado py-5 text-center">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-6">
           <i class="fas fa-check-circle fa-5x text-success mb-4"></i>
           <h1>Ficha de anamnese enviada!</h1>
-          <p class="lead">Agradecemos pelos detalhes. Nossa equipe já está analisando.</p>
+          <p class="lead">Agradecemos pelos detalhes. Nossa equipe do <strong>Instituto Lian Huan</strong> já está analisando.</p>
+          
           <div style="background: #f8f6f0; border-radius: 12px; padding: 20px; margin: 20px 0;">
             <p class="text-muted mb-2"><i class="fas fa-download me-2"></i>Baixe o PDF com todos os dados preenchidos</p>
             <button id="btnDownloadPDF" class="btn btn-primary btn-lg">
               <i class="fas fa-file-pdf"></i> Baixar PDF
             </button>
           </div>
+
           <div style="background: #e8f5e9; border-radius: 12px; padding: 20px; margin: 20px 0;">
             <p class="text-muted mb-2"><i class="fab fa-whatsapp me-2"></i>Envie um resumo pelo WhatsApp</p>
             <button id="btnWhatsAppAnamnese" class="btn btn-success btn-lg">
               <i class="fab fa-whatsapp"></i> Enviar via WhatsApp
             </button>
           </div>
+
+          <div class="mt-3">
+            <a href="https://www.instagram.com/lian_huan_instituto/" target="_blank" class="btn btn-outline-secondary me-2">
+              <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="https://wa.me/5581991037789" target="_blank" class="btn btn-outline-success">
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+          </div>
+          
           <a href="/" class="btn btn-outline-secondary mt-3">← Voltar ao início</a>
         </div>
       </div>
     </div>
   </section>
+
   <script>
     (function() {
       const dadosAnamnese = sessionStorage.getItem('dadosAnamnese');
@@ -58,7 +84,7 @@
       document.getElementById('btnWhatsAppAnamnese').addEventListener('click', function() {
         const numero = '558187361800';
         const mensagem = 
-          `🔹 *Ficha de Anamnese - Lian Huan* 🔹%0A%0A` +
+          `🔹 *Ficha de Anamnese - Instituto Lian Huan* 🔹%0A%0A` +
           `*Nome:* ${dados.nome_completo || 'N/I'}%0A` +
           `*Data Nasc.:* ${dados.data_nasc || 'N/I'}%0A` +
           `*Sexo:* ${dados.sexo || 'N/I'}%0A` +
@@ -71,5 +97,6 @@
       });
     })();
   </script>
+
 </body>
 </html>
