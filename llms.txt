@@ -12,6 +12,8 @@ Brazil
 Phone: +55 81 3725-9706
 WhatsApp: +55 81 99103-7789
 Instagram: @lian_huan_instituto
+Facebook: joseivo.sampaio
+YouTube: @Prof.ivosampaio
 
 ## Treatments
 - Acupuncture
@@ -33,6 +35,8 @@ Our treatments are guided by the best available scientific evidence:
 ## Links
 - Website: https://lian-huan-landing.netlify.app/
 - Instagram: https://www.instagram.com/lian_huan_instituto/
+- Facebook: https://www.facebook.com/joseivo.sampaio/
+- YouTube: https://www.youtube.com/@Prof.ivosampaio
 - WhatsApp: https://wa.me/5581991037789
 - Anamnese (Patient Form): https://lian-huan-landing.netlify.app/anamnese.html
 

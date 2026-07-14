@@ -37,7 +37,17 @@ h1, h2, h3, h4, h5, .section-title {
   margin: 10px 0 0 0;
 }
 
-/* ===== LINKS ===== */
+/* ===== LINKS - CORRIGIDOS (NÃO AZUIS) ===== */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+a:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
 .link-highlight {
   color: var(--secondary);
   text-decoration: none;
@@ -45,6 +55,7 @@ h1, h2, h3, h4, h5, .section-title {
 }
 .link-highlight:hover {
   text-decoration: underline;
+  color: #b8890e;
 }
 
 .link-primary {
@@ -54,6 +65,7 @@ h1, h2, h3, h4, h5, .section-title {
 }
 .link-primary:hover {
   text-decoration: underline;
+  color: #1f4a2d;
 }
 
 .link-secondary {
@@ -63,6 +75,7 @@ h1, h2, h3, h4, h5, .section-title {
 }
 .link-secondary:hover {
   text-decoration: underline;
+  color: #b8890e;
 }
 
 .link-muted {
@@ -132,6 +145,7 @@ h1, h2, h3, h4, h5, .section-title {
   border-color: #b8890e;
   transform: scale(1.02);
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  color: #1e2b2a;
 }
 
 .btn-instagram {
@@ -146,6 +160,7 @@ h1, h2, h3, h4, h5, .section-title {
 .btn-instagram:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+  color: #fff;
 }
 
 /* ===== SOBRE ===== */
@@ -236,6 +251,7 @@ h1, h2, h3, h4, h5, .section-title {
 .formulario .btn-primary:hover {
   background-color: #1f4a2d;
   border-color: #1f4a2d;
+  color: #fff;
 }
 .formulario .link-primary {
   text-decoration: none;
@@ -303,6 +319,10 @@ h1, h2, h3, h4, h5, .section-title {
   border-radius: 50px;
   font-weight: 600;
 }
+.obrigado .btn-success:hover {
+  background-color: #1da851;
+  color: #fff;
+}
 
 /* ===== ANAMNESE ===== */
 .anamnese-section {
@@ -330,6 +350,7 @@ h1, h2, h3, h4, h5, .section-title {
 .btn-enviar:hover {
   background: #1f4a2d;
   transform: scale(1.02);
+  color: #fff;
 }
 .is-invalid {
   border-color: #dc3545 !important;
