@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Obrigado – Lian Huan Instituto</title>
+  <meta name="robots" content="noindex, follow">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
@@ -39,7 +40,7 @@
         return;
       }
       const { nome, whatsapp, email, cidade, queixa } = JSON.parse(leadData);
-      const numero = '558187361800'; // Número atualizado
+      const numero = '558187361800';
       const mensagem = `Olá! Meu nome é ${nome} e gostaria de agendar uma avaliação. %0A` +
                        `WhatsApp: ${whatsapp} %0A` +
                        `E-mail: ${email || 'Não informado'} %0A` +
