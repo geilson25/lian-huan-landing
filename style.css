@@ -198,8 +198,44 @@ a[href^="#"]:not(.btn):hover {
 /* ===== SOBRE ===== */
 .sobre .profile-img {
   border: 4px solid var(--secondary);
-  max-width: 100%;
+  max-width: 200px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+.sobre .profile-img:hover {
+  transform: scale(1.03);
+}
+.sobre .card {
+  border: none;
+  background: #fff;
+  transition: 0.3s;
+}
+.sobre .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+.sobre ul {
+  list-style: none;
+  padding-left: 0;
+}
+.sobre ul li {
+  padding: 2px 0;
+  font-size: 0.9rem;
+}
+.sobre ul li i {
+  margin-right: 8px;
+}
+
+/* Responsivo para as colunas de especialidades */
+@media (max-width: 576px) {
+  .sobre ul {
+    columns: 1 !important;
+  }
+}
+@media (min-width: 577px) and (max-width: 992px) {
+  .sobre ul {
+    columns: 2;
+  }
 }
 
 /* ===== TRATAMENTOS ===== */
